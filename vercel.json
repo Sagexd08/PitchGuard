@@ -1,0 +1,43 @@
+{
+  "functions": {
+    "api/score.py": {
+      "runtime": "python3.9"
+    },
+    "api/health.py": {
+      "runtime": "python3.9"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/score",
+      "dest": "/api/score.py"
+    },
+    {
+      "src": "/api/health",
+      "dest": "/api/health.py"
+    }
+  ],
+  "env": {
+    "OPENROUTER_API_KEY": "@openrouter-api-key",
+    "GEMINI_API_KEY": "@gemini-api-key"
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ]
+}
